@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conversations-deployment
+  labels:
+    app: conversations
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: conversations
+  template:
+    metadata:
+      labels:
+        app: conversations
+    spec:
+      containers:
+      - name: conversations
+        image: 2407akshi/capstone_conversation
+        ports:
+        - containerPort: 9091
+        env:
+        - name: MONGO_URI
+          value: "mongodb+srv://ilhansyed:devrevler@cluster0.daiu1xh.mongodb.net/?retryWrites=true&w=majority"
+        - name: CAPSTONE_CONVERSATIONS_PORT
+          value: "9091"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: conversations-service
+spec:
+  selector:
+    app: conversations
+  ports:
+  - protocol: TCP
+    port: 9091
+    targetPort: 9091

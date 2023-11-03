@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-deployment
+  labels:
+    app: tickets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tickets
+  template:
+    metadata:
+      labels:
+        app: tickets
+    spec:
+      containers:
+      - name: tickets
+        image: 2407akshi/capstone_ticket
+        ports:
+        - containerPort: 9092
+        env:
+        - name: MONGO_URI
+          value: "mongodb+srv://ilhansyed:devrevler@cluster0.daiu1xh.mongodb.net/?retryWrites=true&w=majority"
+        - name: CAPSTONE_TICKETS_PORT
+          value: "9092"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tickets-service
+spec:
+  selector:
+    app: tickets
+  ports:
+  - protocol: TCP
+    port: 9092
+    targetPort: 9092
