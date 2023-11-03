@@ -6,10 +6,10 @@ metadata:
   annotations:
     argocd-image-updater.argoproj.io/image-list: 
     - users=2407akshi/capstone_user:prod
-    - issues=2407akshi/capstone_issues:prod
-    - tickets=2407akshi/capstone_tickets:prod
-    - comments=2407akshi/capstone_comments:prod
-    - conversations=2407akshi/capstone_conversations:prod
+    - issues=2407akshi/capstone_issue:prod
+    - tickets=2407akshi/capstone_ticket:prod
+    - comments=2407akshi/capstone_comment:prod
+    - conversations=2407akshi/capstone_conversation:prod
     - gateway=2407akshi/capstone_gateway:prod
     argocd-image-updater.argoproj.io/users.update-strategy: digest
     argocd-image-updater.argoproj.io/issues.update-strategy: digest
