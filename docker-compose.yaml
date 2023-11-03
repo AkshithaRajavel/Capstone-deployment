@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  USERS:
+    image: capstone_user
+    container_name: user-service
+    environment:
+      - MONGO_URI=mongodb+srv://ilhansyed:devrevler@cluster0.daiu1xh.mongodb.net/?retryWrites=true&w=majority
+      - CAPSTONE_USERS_PORT=9090
+  TICKETS:
+    image: capstone_ticket
+    container_name: ticket-service
+    environment:
+      - MONGO_URI=mongodb+srv://ilhansyed:devrevler@cluster0.daiu1xh.mongodb.net/?retryWrites=true&w=majority
+      - CAPSTONE_TICKETS_PORT=9092
+  ISSUES:
+    image: capstone_issue
+    container_name: issue-service
+    environment:
+      - MONGO_URI=mongodb+srv://ilhansyed:devrevler@cluster0.daiu1xh.mongodb.net/?retryWrites=true&w=majority
+      - CAPSTONE_ISSUES_PORT=9093
+  COMMENTS:
+    image: capstone_comment
+    container_name: comment-service
+    environment:
+      - MONGO_URI=mongodb+srv://ilhansyed:devrevler@cluster0.daiu1xh.mongodb.net/?retryWrites=true&w=majority
+      - CAPSTONE_COMMENTS_PORT=9094
+  GATEWAY:
+    image: capstone_gateway
+    ports:
+      - "8000:8000"
+    environment:
+      - CAPSTONE_USERS_PORT=9090
+      - CAPSTONE_TICKETS_PORT=9092
+      - CAPSTONE_ISSUES_PORT=9093
+      - CAPSTONE_COMMENTS_PORT=9094
+      - CAPSTONE_COMMENTS_SERVICE=comment-service
+      - CAPSTONE_ISSUES_SERVICE=issue-service
+      - CAPSTONE_TICKETS_SERVICE=ticket-service
+      - CAPSTONE_USERS_SERVICE=user-service
+      - JWTSECRET=DevDesk
+    depends_on:
+      - USERS
+      - TICKETS
+      - ISSUES
+      - COMMENTS

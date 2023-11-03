@@ -8,7 +8,13 @@ spec:
   source:
     repoURL: https://github.com/AkshithaRajavel/Capstone-deployment.git
     targetRevision: HEAD
-    path: 
+    path: kube
   destination:
     server: https://kubernetes.default.svc
     namespace: default
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
