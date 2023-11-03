@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: issues
-        image: 2407akshi/capstone_issue
+        image: 2407akshi/capstone_issue:prod
         ports:
         - containerPort: 9093
         env:

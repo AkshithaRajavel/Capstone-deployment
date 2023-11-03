@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: comments
-        image: 2407akshi/capstone_comment
+        image: 2407akshi/capstone_comment:prod
         ports:
         - containerPort: 9094
         env:

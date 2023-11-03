@@ -3,6 +3,20 @@ kind: Application
 metadata:
   name: capstone-application
   namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: 
+    - users=2407akshi/capstone_user:prod
+    - issues=2407akshi/capstone_issues:prod
+    - tickets=2407akshi/capstone_tickets:prod
+    - comments=2407akshi/capstone_comments:prod
+    - conversations=2407akshi/capstone_conversations:prod
+    - gateway=2407akshi/capstone_gateway:prod
+    argocd-image-updater.argoproj.io/users.update-strategy: digest
+    argocd-image-updater.argoproj.io/issues.update-strategy: digest
+    argocd-image-updater.argoproj.io/tickets.update-strategy: digest
+    argocd-image-updater.argoproj.io/comments.update-strategy: digest
+    argocd-image-updater.argoproj.io/conversations.update-strategy: digest
+    argocd-image-updater.argoproj.io/gateway.update-strategy: digest
 spec:
   project: default
   source:

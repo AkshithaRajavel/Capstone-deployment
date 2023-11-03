@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gateway
-        image: 2407akshi/capstone_gateway
+        image: 2407akshi/capstone_gateway:prod
         ports:
         - containerPort: 8000
         env:
@@ -37,9 +37,9 @@ spec:
         - name: CAPSTONE_TICKETS_SERVICE
           value: "tickets-service"
         - name: CAPSTONE_USERS_SERVICE
-          value: "conversations-service"
-        - name: CAPSTONE_CONVERSATIONS_SERVICE
           value: "users-service"
+        - name: CAPSTONE_CONVERSATIONS_SERVICE
+          value: "conversations-service"
         - name: JWTSECRET
           value: "DevDesk"
 

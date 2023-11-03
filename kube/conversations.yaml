@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: conversations
-        image: 2407akshi/capstone_conversation
+        image: 2407akshi/capstone_conversation:prod
         ports:
         - containerPort: 9091
         env:

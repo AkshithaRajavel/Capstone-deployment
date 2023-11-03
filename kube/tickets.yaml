@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: tickets
-        image: 2407akshi/capstone_ticket
+        image: 2407akshi/capstone_ticket:prod
         ports:
         - containerPort: 9092
         env:
